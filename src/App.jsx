@@ -9,6 +9,10 @@ function makeGrid() {
   return Array.from({length: GRID_HEIGHT}, () => Array(GRID_WIDTH).fill(DEFAULT_COLOR))
 }
 
+function makeGridElement() {
+  
+}
+
 function App() {
   const [grid, setGrid] = useState(makeGrid)
   const [currentColor, setCurrentColor] = useState('#1a1a1a')
@@ -16,7 +20,9 @@ function App() {
   console.log(grid);
 
   return (
-    <div></div>
+    <div>
+      grid.map(makeGridElement)
+    </div>
   )
 }
 
