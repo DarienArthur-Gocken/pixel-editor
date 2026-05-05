@@ -37,6 +37,7 @@ function App() {
             <button key = {color} className={'preset' + (color === currentColor ? ' selected' : '')} style = {{ background: color }}
             onClick={() => setCurrentColor(color)}/>))}
         </div>
+        <button className="clear-btn" onClick={() => setGrid(makeGrid())}>Clear</button>
       </label>
       <div className="pixel-grid"
         style={{ gridTemplateColumns: `repeat(${GRID_WIDTH}, 1fr)` }} >
