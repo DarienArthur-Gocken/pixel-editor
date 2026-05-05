@@ -1,0 +1,21 @@
+.pixel-grid {
+    display: grid;
+    gap: 1px;
+    /* thin gap creates visible cell borders */
+    background: #d4d4d4;
+    /* shows through the gap as the grid line color */
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    /* keeps the grid square no matter the width */
+    max-width: 640px;
+}
+
+.pixel {
+    border: none;
+    padding: 0;
+    cursor: crosshair;
+    aspect-ratio: 1;
+    /* keeps cells square */
+}
