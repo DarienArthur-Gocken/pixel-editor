@@ -14,6 +14,7 @@ function makeGrid() {
 function App() {
   const [grid, setGrid] = useState(makeGrid)
   const [currentColor, setCurrentColor] = useState('#1a1a1a')
+  const [painting, setPainting] = useState(false)
 
   console.log(grid);
 
@@ -25,6 +26,12 @@ function App() {
     setGrid(newGrid)
   }
 
+  function dragPaint(r, c) {
+    if(!painting) return
+    paint(r,c)
+  }
+
+  window.addEventListener('mouseup', () => setPainting(false));
   
 
   return (
@@ -47,6 +54,8 @@ function App() {
             style={{ background: color }}
             aria-label={`Pixel ${r}, ${c}`}
             onClick = {() => paint(r, c)}
+            onMouseEnter = {() => dragPaint(r,c)}
+            onMouseDown={() => setPainting(true)}
             />
           ))
         )}
