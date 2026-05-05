@@ -33,17 +33,25 @@ function App() {
 
   window.addEventListener('mouseup', () => setPainting(false));
   
-  function exportArt(EXPORT_SCALE = 1) {
+  function exportArt(EXPORT_SCALE = 20) {
     const canvas = document.createElement('canvas')
     canvas.width = GRID_WIDTH * EXPORT_SCALE
     canvas.height = GRID_HEIGHT * EXPORT_SCALE
+
     const ctx = canvas.getContext('2d')
-    for (let r = 0; r < GRID_WIDTH; r++) {
-      for (let c = 0; c <GRID_HEIGHT; c++) {
+
+    for (let r = 0; r < GRID_HEIGHT; r++) {
+      for (let c = 0; c < GRID_WIDTH; c++) {
         ctx.fillStyle = grid[r][c]
-        ctx.fillRect(c * EXPORT_SCALE, r * EXPORT_SCALE, EXPORT_SCALE, EXPORT_SCALE)
+        ctx.fillRect(
+          c * EXPORT_SCALE,
+          r * EXPORT_SCALE,
+          EXPORT_SCALE,
+          EXPORT_SCALE
+        )
       }
     }
+
     const link = document.createElement('a')
     link.download = 'pixel-art.png'
     link.href = canvas.toDataURL('image/png')
