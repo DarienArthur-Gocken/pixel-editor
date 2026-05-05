@@ -39,3 +39,24 @@
     padding: 4px;
     background: #fff;
 }
+
+.presets {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.preset {
+  width: 50%;
+  aspect-ratio: 1;
+  border: 1px solid #555;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.preset.selected {
+  border: 2px solid;
+  border-color: #1a1a1a;
+  transform: scale(1.1);
+}

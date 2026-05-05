@@ -5,6 +5,8 @@ const DEFAULT_COLOR = '#ffffff'
 const GRID_WIDTH = 16
 const GRID_HEIGHT = 16
 
+const PRESET_COLORS = ['#ffffff', '#1a1a1a', '#505050', '#ffc567', '#fb7da8', '#fd5a46', '#552cb7', '#00995a']
+
 function makeGrid() {
   return Array.from({length: GRID_HEIGHT}, () => Array(GRID_WIDTH).fill(DEFAULT_COLOR))
 }
@@ -30,6 +32,11 @@ function App() {
       <label className="pixel-tool"> Color
         <input type="color" value={currentColor}
           onChange={e => setCurrentColor(e.target.value)} />
+        <div classname = "presets">
+          {PRESET_COLORS.map(color => (
+            <button key = {color} className={'preset' + (color === currentColor ? ' selected' : '')} style = {{ background: color }}
+            onClick={() => setCurrentColor(color)}/>))}
+        </div>
       </label>
       <div className="pixel-grid"
         style={{ gridTemplateColumns: `repeat(${GRID_WIDTH}, 1fr)` }} >
