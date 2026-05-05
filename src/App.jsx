@@ -23,8 +23,14 @@ function App() {
     setGrid(newGrid)
   }
 
+  
+
   return (
     <div className="pixel-art">
+      <label className="pixel-tool"> Color
+        <input type="color" value={currentColor}
+          onChange={e => setCurrentColor(e.target.value)} />
+      </label>
       <div className="pixel-grid"
         style={{ gridTemplateColumns: `repeat(${GRID_WIDTH}, 1fr)` }} >
         {grid.map((row, r) => 
