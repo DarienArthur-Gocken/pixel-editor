@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div className="pixel-art">
-      <label className="pixel-tool"> Color
+      <label className="pixel-tool"> <h2>Pixel Art Editor</h2>Color
         <input type="color" value={currentColor}
           onChange={e => setCurrentColor(e.target.value)} />
         <div className = "presets">
