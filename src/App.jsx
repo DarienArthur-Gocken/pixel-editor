@@ -32,7 +32,7 @@ function App() {
       <label className="pixel-tool"> Color
         <input type="color" value={currentColor}
           onChange={e => setCurrentColor(e.target.value)} />
-        <div classname = "presets">
+        <div className = "presets">
           {PRESET_COLORS.map(color => (
             <button key = {color} className={'preset' + (color === currentColor ? ' selected' : '')} style = {{ background: color }}
             onClick={() => setCurrentColor(color)}/>))}
