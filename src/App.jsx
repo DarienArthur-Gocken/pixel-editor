@@ -15,6 +15,14 @@ function App() {
 
   console.log(grid);
 
+  function paint(r, c) {
+    const newGrid = grid.map(row => row.slice())
+
+    newGrid[r][c] = currentColor
+
+    setGrid(newGrid)
+  }
+
   return (
     <div className="pixel-art">
       <div className="pixel-grid"
@@ -24,6 +32,7 @@ function App() {
             <button key={`{r}-${c}`} className="pixel"
             style={{ background: color }}
             aria-label={`Pixel ${r}, ${c}`}
+            onClick = {() => paint(r, c)}
             />
           ))
         )}
@@ -31,5 +40,7 @@ function App() {
     </div>
   )
 }
+
+
 
 export default App
