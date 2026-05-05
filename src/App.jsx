@@ -33,6 +33,22 @@ function App() {
 
   window.addEventListener('mouseup', () => setPainting(false));
   
+  function exportArt(EXPORT_SCALE = 1) {
+    const canvas = document.createElement('canvas')
+    canvas.width = GRID_WIDTH * EXPORT_SCALE
+    canvas.height = GRID_HEIGHT * EXPORT_SCALE
+    const ctx = canvas.getContext('2d')
+    for (let r = 0; r < GRID_WIDTH; r++) {
+      for (let c = 0; c <GRID_HEIGHT; c++) {
+        ctx.fillStyle = grid[r][c]
+        ctx.fillRect(c * EXPORT_SCALE, r * EXPORT_SCALE, EXPORT_SCALE, EXPORT_SCALE)
+      }
+    }
+    const link = document.createElement('a')
+    link.download = 'pixel-art.png'
+    link.href = canvas.toDataURL('image/png')
+    link.click()
+  }
 
   return (
     <div className="pixel-art">
@@ -45,6 +61,7 @@ function App() {
             onClick={() => setCurrentColor(color)}/>))}
         </div>
         <button className="clear-btn" onClick={() => setGrid(makeGrid())}>Clear</button>
+        <button className="exportArt" onClick={exportArt}>Export Art</button>
       </label>
       <div className="pixel-grid"
         style={{ gridTemplateColumns: `repeat(${GRID_WIDTH}, 1fr)` }} >
