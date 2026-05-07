@@ -21,7 +21,7 @@ function App() {
   function paint(r, c) {
     const newGrid = grid.map(row => row.slice())
 
-    newGrid[r][c] = currentColor
+    newGrid[c][r] = currentColor
 
     setGrid(newGrid)
   }
