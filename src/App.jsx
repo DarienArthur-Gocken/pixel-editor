@@ -81,7 +81,7 @@ function App() {
             onClick={() => setCurrentColor(color)}/>))}
         </div>
         <button className="clear-btn" onClick={() => setGrid(makeGrid())}>Clear</button>
-        <button className="exportArt" onClick={exportArt}>Export Art</button>
+        <button className="exportArt" onClick={exportArt()}>Export Art</button>
       </label>
       <div className="pixel-grid"
         style={{ gridTemplateColumns: `repeat(${GRID_WIDTH}, 1fr)` }} >
