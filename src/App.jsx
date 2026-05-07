@@ -32,17 +32,25 @@ function App() {
   }
 
   window.addEventListener('mouseup', () => setPainting(false));
-  
-  function exportArt(EXPORT_SCALE = 20) {
+    
+  function exportArt() {
+    const EXPORT_SCALE = 20
+
     const canvas = document.createElement('canvas')
     canvas.width = GRID_WIDTH * EXPORT_SCALE
     canvas.height = GRID_HEIGHT * EXPORT_SCALE
 
     const ctx = canvas.getContext('2d')
 
+    if (!ctx) {
+      console.error('Canvas context failed')
+      return
+    }
+
     for (let r = 0; r < GRID_HEIGHT; r++) {
       for (let c = 0; c < GRID_WIDTH; c++) {
         ctx.fillStyle = grid[r][c]
+
         ctx.fillRect(
           c * EXPORT_SCALE,
           r * EXPORT_SCALE,
@@ -52,12 +60,16 @@ function App() {
       }
     }
 
-    const link = document.createElement('a')
-    link.download = 'pixel-art.png'
-    link.href = canvas.toDataURL('image/png')
-    link.click()
-  }
+    const url = canvas.toDataURL('image/png')
 
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'pixel-art.png'
+
+    document.body.appendChild(a)
+    a.click()
+    a.remove()
+  }
   return (
     <div className="pixel-art">
       <label className="pixel-tool"> <h2>Pixel Art Editor</h2>Color
