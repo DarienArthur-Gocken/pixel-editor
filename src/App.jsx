@@ -84,7 +84,7 @@ function App() {
         <button className="exportArt" onClick={exportArt()}>Export Art</button>
       </label>
       <div className="pixel-grid"
-        style={{ gridTemplateColumns: `repeat(${GRID_WIDTH}, 1fr)` }} >
+        style={{ gridTemplateColumns: `repeat(1fr, ${GRID_WIDTH})` }} >
         {grid.map((row, r) => 
           row.map((color, c) => (
             <button key={`{r}-${c}`} className="pixel"
